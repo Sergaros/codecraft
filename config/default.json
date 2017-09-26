@@ -1,3 +1,6 @@
 {
-    "port": "3500"
+    "port": "3500",
+    "mongoose": {
+        "uri": "mongodb://codecraft_user:xft6yh78jnb89@ds151554.mlab.com:51554/codecraft_storage"
+    }
 }

@@ -1,5 +1,5 @@
 
-exports.init = app => app.use(async function(ctx, next) {
+/*exports.init = app => app.use(async function(ctx, next) {
 
   // keep previous flash
   let messages = ctx.session.messages || {};
@@ -38,4 +38,6 @@ exports.init = app => app.use(async function(ctx, next) {
     ctx.session.messages = messages;
   }
 
-});
+});*/
+
+exports.init = app =>{};
