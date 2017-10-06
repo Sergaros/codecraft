@@ -27,3 +27,5 @@ router.get('/dbtest', async function(ctx) {
 app.use(router.routes());
 
 app.listen(config.get('port'));
+
+//git push -u origin master

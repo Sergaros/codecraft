@@ -23,9 +23,11 @@ h3 {
   text-transform: uppercase;
 }
 
+
 /*==============================================================================
 CONTENT (Generic)
 /*============================================================================*/
+
 .content-box {
   padding: 60px 0 60px 0;
 }
@@ -135,9 +137,11 @@ Animate
   animation-delay: 1s;
 }
 
+
 /*==============================================================================
 Themes
 /*============================================================================*/
+
 .themes-item {
   padding: 20px 0 20px 0;
   margin-bottom: 20px;
@@ -153,12 +157,14 @@ Themes
 }
 
 .themes-item-title h3 {
-    text-transform: none;
+  text-transform: none;
 }
+
 
 /*==============================================================================
 Content
 /*============================================================================*/
+
 .img-bg-diagonal {
   width: 60%;
   height: 700px;
@@ -167,6 +173,7 @@ Content
   border-left: 200px solid #fff;
   border-top: 700px solid transparent;
 }
+
 #content-content-box {
   float: left;
   height: 700px;
@@ -193,4 +200,104 @@ Content
 
 #content-descr p {
   margin-bottom: 30px;
+}
+
+
+/*==============================================================================
+Footer
+/*============================================================================*/
+
+#footer-bottom {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 30px 0;
+  margin-top: 60px;
+}
+
+#footer-copyrights p {
+  margin: 0;
+  color: #000;
+}
+
+#footer-menu {
+  float: left;
+  color: #000;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+#footer-menu ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+#footer-menu ul li {
+  display: inline-block;
+}
+
+#footer-menu a {
+  color: #000;
+  font-size: 16px;
+  font-weight: 300;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+#footer-menu a:hover {
+  color: #fff;
+}
+
+/*==============================================================================
+Navigation
+/*============================================================================*/
+/*.navbar {
+    padding: 20px 0;
+}
+
+.vesco-top-nav {
+     background-color: rgba(0, 0, 0, 0.1);
+     padding: 7px 0;
+     border: none;
+}
+
+.nav-wrapper {
+    padding: 0 15px;
+}
+
+.navbar a {
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: red;
+}*/
+
+.navbar {
+    font-family: Montserrat, sans-serif;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0, 0.1);
+    border: 0;
+    font-size: 11px !important;
+    letter-spacing: 4px;
+}
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+.navbar-nav li a:hover {
+    color: #fff !important;
+    background-color: rgba(0,0,0, 0.5);
+}
+.navbar-nav li.active a {
+    color: #fff !important;
+    background-color: #29292c !important;
+}
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+}
+.navbar-toggle:hover, .navbar-toggle:focus {
+    background-color: rgba(0,0,0, 0.5);
 }
