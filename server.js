@@ -21,6 +21,21 @@ router.get('/dbtest', async function(ctx) {
     ctx.body = await mongoose.models.About.find({});
 });
 
+router.get('/isloggedin', async function(ctx) {
+    //console.log('isLogged - ', ctx.isAuthenticated());
+    //console.log('Session - ', ctx.session.passport.user);
+    /*console.log('ctx.csrf - ',ctx.csrf);
+    console.log('ctx.headers - ',ctx.headers);
+    console.log('csrf-token ',ctx.req.headers['csrf-token']);
+    console.log('xsrf-token ',ctx.req.headers['xsrf-token']);
+    console.log('x-csrf-token ',ctx.req.headers['x-csrf-token']);
+    console.log('x-xsrf-token ', ctx.req.headers['x-xsrf-token']);*/
+    ctx.body = {result: ctx.isAuthenticated()};
+});
+
+router.post('/login', require('./routes/login').post);
+router.get('/logout', require('./routes/logout').post);
+
 //require('./routes/some_rout')(router);
 //router.post('/api/login', require('./routes/login').post);
 

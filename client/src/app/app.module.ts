@@ -1,16 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {Routes, RouterModule} from "@angular/router";
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { WorksComponent } from './works/works.component';
-
-import {Routes, RouterModule} from "@angular/router";
+import { WorkComponent } from './work/work.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'works', component: WorksComponent},
+  {path: 'work', component: WorkComponent},
   {path: '**', component: HomeComponent}
 ];
 
@@ -18,7 +16,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    WorksComponent
+    WorkComponent
   ],
   imports: [
     BrowserModule,

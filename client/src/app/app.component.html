@@ -1,65 +1,48 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<!--<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>-->
 <header>
-    <!--<nav class="navbar navbar-inverse navbar-fixed-top vesco-top-nav" role="navigation">
-        <div class="container-fluid">
-            <div class="nav-wrapper">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#vesco-menu">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#home">Codecraft</a>
-                </div>
-                <div class="collapse navbar-collapse" id="vesco-menu">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#themes">Themes</a></li>
-                        <li><a href="#cv">CV</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>-->
-    <nav class="navbar navbar-default navbar-fixed-top">
-<div class="container-fluid">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#home">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#home">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#myPage">Logo</a>
-  </div>
-  <div class="collapse navbar-collapse" id="myNavbar">
-    <ul class="nav navbar-nav navbar-right">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#themes">Themes</a></li>
-        <li><a href="#cv">CV</a></li>
-        <li><a href="#works">Works</a></li>
-    </ul>
-  </div>
-</div>
-</nav>
+        <a class="navbar-brand" href="#myPage">Logo</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#themes">Themes</a></li>
+          <li><a href="#cv">CV</a></li>
+          <li><a href="#work">Works</a></li><!--Temporary-->
+        </ul>
+      </div>
+    </div>
+  </nav>
 </header>
 
 <router-outlet></router-outlet>
+
+<footer>
+  <div id="contact"></div>
+  <div id="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div id="footer-copyrights">
+            <p>Copyrights &copy; 2017 All rights reserved</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div id="footer-menu">
+            <ul>
+              <li><a href="#home">Home /</a></li>
+              <li><a href="#themes">Themes /</a></li>
+              <li><a href="#cv">CV</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
