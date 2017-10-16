@@ -15,11 +15,23 @@ handlers.forEach(handler => require('./handlers/' + handler).init(app));
 const Router = require('koa-router');
 const router = new Router();
 
-router.get('/dbtest', async function(ctx) {
-    //let users = await mongoose.models.User.find({});
-    //console.log('users list - ', users);
-    ctx.body = await mongoose.models.About.find({});
-});
+/*router.get('/defuser', async function(ctx) {
+
+    const def_values = {
+        "userName": "Sergaros",
+        "userEmail": "sergej.tertychnij@gmail.com",
+        "userPassword": "19880525fjty"
+    };
+
+    const user = mongoose.models.User({
+                name: def_values.userName,
+                email: def_values.userEmail,
+                password: def_values.userPassword
+            });
+
+    let result = await = user.save();
+    ctx.body = {result: true};
+});*/
 
 router.get('/isloggedin', async function(ctx) {
     //console.log('isLogged - ', ctx.isAuthenticated());
@@ -34,7 +46,7 @@ router.get('/isloggedin', async function(ctx) {
 });
 
 router.post('/login', require('./routes/login').post);
-router.get('/logout', require('./routes/logout').post);
+router.get('/logout', require('./routes/logout').get);
 
 //require('./routes/some_rout')(router);
 //router.post('/api/login', require('./routes/login').post);

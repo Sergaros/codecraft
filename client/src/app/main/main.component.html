@@ -1,0 +1,34 @@
+<section id="home">
+  <div id="home-cover" class="bg-parallax animated fadeIn">
+    <div id="home-content-box">
+      <div id="home-content-box-inner">
+        <div id="home-heading" class="animated zoomIn">
+          <h3>Codecraft</h3>
+        </div>
+        <div id="home-btn" class="animated zoomIn">
+          <a class="btn btn-lg btn-general btn-white" href="#work" role="button" title="View my work">View my work!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="themes">
+  <div class="content-box">
+    <div class="content-title wow fadeInDown" data-wow-duration="1s" data-wow-delay=".5s">
+      <h3>Themes</h3>
+      <div class="content-title-underline"></div>
+    </div>
+    <div class="container">
+      <div class="row wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
+          <div class="col-md-4" *ngFor="let theme of themes">
+              <app-theme-header [theme]=theme></app-theme-header>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="content">
+    <app-cv></app-cv>
+</section>
