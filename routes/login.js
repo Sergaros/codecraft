@@ -1,10 +1,9 @@
 const passport = require('koa-passport');
 
 exports.post = async function(ctx, next) {
-    console.log('server loggin', ctx.body);
+    console.log('server loggin', ctx.request.body);
     return passport.authenticate('local', {
             successRedirect: '/',
-            failureRedirect: '/'/*,
-            failureFlash: true // req.flash, better*/
+            failureRedirect: '/'
         })(ctx, next);
 };

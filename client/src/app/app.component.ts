@@ -32,6 +32,7 @@ export class AppComponent implements OnInit, AfterViewInit{
 
       this.auth.logOut()
       .then(res=>{
+          console.log('log out - ', res.ok);
           this.isLogged = false;
       })
       .catch(err=>{
@@ -44,7 +45,8 @@ export class AppComponent implements OnInit, AfterViewInit{
 
       this.auth.logIn('Sergaros', '19880525fjty')
       .then(res=>{
-          this.isLogged = res.json().result;
+          console.log('log in - ', res.ok);
+          this.isLogged = true;
       })
       .catch(err=>{
           console.log('Err - ', err);

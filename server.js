@@ -8,6 +8,7 @@ const fs = require('fs');
 
 const mongoose = require('m_mongoose');
 require('m_database');
+app.keys = [config.get('secret')]; //SECRET WORD FOR SESSION;
 
 const handlers = fs.readdirSync(path.join(__dirname, 'handlers')).sort();
 handlers.forEach(handler => require('./handlers/' + handler).init(app));
