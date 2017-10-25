@@ -9,6 +9,7 @@ import { ThemeHeaderComponent } from './theme-header/theme-header.component';
 import { CvComponent } from './cv/cv.component';
 
 import { AuthService } from './auth.service';
+import { DialogComponent } from './dialog/dialog.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -23,7 +24,8 @@ const routes: Routes = [
     WorkComponent,
     MainComponent,
     ThemeHeaderComponent,
-    CvComponent
+    CvComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

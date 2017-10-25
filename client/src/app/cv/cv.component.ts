@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CvComponent implements OnInit {
 
-  title: string = "Curriculum vitae";
+  title: string = "Some text"//"Curriculum vitae";
   content: string = "<p>some information1</p><p>some information2</p><ul><li>one</li><li>two</li></ul>";
-  
+
   constructor() {}
 
   ngOnInit() {

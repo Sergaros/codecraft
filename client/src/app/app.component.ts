@@ -11,6 +11,7 @@ import { AuthService } from './auth.service';
 export class AppComponent implements OnInit, AfterViewInit{
 
   isLogged: Boolean = false;
+  showDialog: Boolean = false;
 
   constructor(private auth: AuthService){
   }
