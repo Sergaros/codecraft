@@ -1,42 +1,33 @@
 const Koa = require('koa');
+const config = require('config');
 const app = new Koa();
 
-const config = require('config');
+const passport = require('koa-passport');
 
-const path = require('path');
-const fs = require('fs');
+//db connect
+require('./libs/database');
 
-const mongoose = require('m_mongoose');
-require('m_database');
-app.keys = [config.get('secret')]; //SECRET WORD FOR SESSION;
+// trust proxy
+app.proxy = true
 
-const handlers = fs.readdirSync(path.join(__dirname, 'handlers')).sort();
-handlers.forEach(handler => require('./handlers/' + handler).init(app));
+//middlewares
+require('./handlers/favicon')(app);
+require('./handlers/static')(app);
+require('./handlers/logger')(app);
+require('./handlers/error')(app);
+require('./handlers/body_parser')(app);
+require('./handlers/session')(app);
+require('./handlers/passport')(app);
 
+
+// routes
+const fs    = require('fs');
 const Router = require('koa-router');
 const router = new Router();
 
-/*router.get('/defuser', async function(ctx) {
-
-    const def_values = {
-        "userName": "Sergaros",
-        "userEmail": "sergej.tertychnij@gmail.com",
-        "userPassword": "19880525fjty"
-    };
-
-    const user = mongoose.models.User({
-                name: def_values.userName,
-                email: def_values.userEmail,
-                password: def_values.userPassword
-            });
-
-    let result = await = user.save();
-    ctx.body = {result: true};
-});*/
-
-router.get('/isloggedin', async function(ctx) {
-    //console.log('isLogged - ', ctx.isAuthenticated());
-    //console.log('Session - ', ctx.session.passport.user);
+router.get('/isloggedin', function(ctx) {
+    console.log('isLogged - ', ctx.isAuthenticated());
+    console.log('Session - ', ctx.session);
     /*console.log('ctx.csrf - ',ctx.csrf);
     console.log('ctx.headers - ',ctx.headers);
     console.log('csrf-token ',ctx.req.headers['csrf-token']);
@@ -46,14 +37,54 @@ router.get('/isloggedin', async function(ctx) {
     ctx.body = {result: ctx.isAuthenticated()};
 });
 
-router.post('/login', require('./routes/login').post);
-router.get('/logout', require('./routes/logout').get);
+/*router.get('/', function(ctx) {
+  ctx.type = 'html'
+  ctx.body = fs.createReadStream('views/login.html')
+});
 
-//require('./routes/some_rout')(router);
-//router.post('/api/login', require('./routes/login').post);
+router.post('/custom', function(ctx) {
+  return passport.authenticate('local', function(err, user, info, status) {
+    if (user === false) {
+      ctx.body = { success: false }
+      ctx.throw(401)
+    } else {
+      ctx.body = { success: true }
+      return ctx.login(user)
+    }
+  })(ctx)
+});*/
+
+// POST /login
+/*router.post('/login',
+  passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/'
+    })
+);*/
+
+router.post('/login',
+  passport.authenticate('local'), function(ctx){
+      ctx.body = {result :ctx.isAuthenticated()};
+  }
+);
+
+
+router.get('/logout', function(ctx) {
+  ctx.logout()
+  ctx.redirect('/')
+});
+
+router.get('/app', function(ctx) {
+  ctx.type = 'html'
+  ctx.body = fs.createReadStream('views/app.html')
+});
 
 app.use(router.routes());
 
-app.listen(config.get('port'));
+// start server
+const port = process.env.PORT || config.get('port');
 
-//git push -u origin master
+if(require.main === module)
+    app.listen(port, () => console.log('Server listening on', port))
+else
+    module.exports = app;

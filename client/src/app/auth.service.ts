@@ -8,7 +8,7 @@ export class AuthService {
   constructor(private http: Http) { }
 
   logIn(name: string, password: string){
-      return this.http.post('/login', {name:name, password:password})
+      return this.http.post('/login', {username:name, password:password})
       .toPromise();
   }
 

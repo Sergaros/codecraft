@@ -1,17 +1,17 @@
+'use strict'
+
 const mongoose = require('mongoose');
 const config = require('config');
 
 mongoose.Promise = Promise;
-//mongoose.set('debug', true);
-     
 
-mongoose.connect(config.get('mongoose.uri'),/*config.get('mongoose.options')*/{useMongoClient: true});
+mongoose.connect(config.get('mongoose.uri'), {useMongoClient: true});
 
 mongoose.connection.on('error',function (err) {
     console.log('Mongoose connection error: ' + err);
 });
 
-var conn = mongoose.connection;
+let conn = mongoose.connection;
 conn.once('open', function() {
   console.log('Mongoose connection complete!');
 });
@@ -22,5 +22,3 @@ process.on('SIGINT', function() {
 		process.exit(0);
 	});
 });
-
-module.exports = mongoose;

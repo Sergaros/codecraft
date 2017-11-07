@@ -1,5 +1,7 @@
+'use strict'
+
 const serve = require('koa-static');
 
-exports.init = app => {
+module.exports = app => {
     app.use(serve('client/dist'));
 }
