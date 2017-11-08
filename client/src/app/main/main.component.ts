@@ -13,11 +13,11 @@ export class MainComponent implements OnInit {
 
     constructor() {
         this.themes = [
-            new ThemeHeader('#angular','/assets/img/angular.svg','Angular.js', ['Templates', 'Snippets', 'Others']),
-            new ThemeHeader('#node','/assets/img/nodejs.svg','Node.js', ['Templates', 'Snippets', 'Others']),
-            new ThemeHeader('#mongodb','/assets/img/mongo.png','MongoDB', ['Templates', 'Snippets', 'Others']),
-            new ThemeHeader('#redis','/assets/img/redis.svg','Redis', ['Templates', 'Snippets', 'Others']),
-            new ThemeHeader('#docker','/assets/img/docker.svg','Docker', ['Templates', 'Snippets', 'Others']),
+            new ThemeHeader('angular','/assets/img/angular.svg','Angular.js', ['Templates', 'Snippets', 'Others']),
+            new ThemeHeader('node','/assets/img/nodejs.svg','Node.js', ['Templates', 'Snippets', 'Others']),
+            new ThemeHeader('mongodb','/assets/img/mongo.png','MongoDB', ['Templates', 'Snippets', 'Others']),
+            new ThemeHeader('redis','/assets/img/redis.svg','Redis', ['Templates', 'Snippets', 'Others']),
+            new ThemeHeader('docker','/assets/img/docker.svg','Docker', ['Templates', 'Snippets', 'Others']),
         ];
     }
 

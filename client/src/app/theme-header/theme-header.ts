@@ -1,20 +1,20 @@
 export class ThemeHeader {
- public href: string;
+ public name: string;
  public img: string;
  public title: string;
  public contentList: string[];
 
- constructor(href: string,
+ constructor(name: string,
              img: string,
              title: string,
              contentList: string[] = []) {
-    this.href = href;
+    this.name = name;
     this.img = img;
     this.title = title;
     this.contentList = contentList;
  }
 
- contentLink(name: string):string{
-     return `${this.href}/${name}`;
- }
+ /*contentLink(name: string):string{
+     return `${this.name}/${name}`;
+ }*/
 }
