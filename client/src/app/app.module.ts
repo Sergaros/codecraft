@@ -9,29 +9,29 @@ import {
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppComponent } from './app.component';
-import { WorkComponent } from './work/work.component';
 import { MainComponent } from './main/main.component';
 import { ThemeHeaderComponent } from './theme-header/theme-header.component';
 import { CvComponent } from './cv/cv.component';
 
 import { AuthService } from './auth.service';
 import { LoginComponent } from './login/login.component';
+import { ThemeComponent } from './theme/theme.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: MainComponent},
-  {path: 'work', component: WorkComponent},
+  {path: 'work', component: ThemeComponent},
   {path: '**', component: MainComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    WorkComponent,
     MainComponent,
     ThemeHeaderComponent,
     CvComponent,
     LoginComponent,
+    ThemeComponent,
   ],
   imports: [
     BrowserModule,
