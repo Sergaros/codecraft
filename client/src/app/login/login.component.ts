@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { Subject } from 'rxjs/Subject';
 import { AuthService } from '../auth.service';
 import {
   FormGroup,
@@ -19,15 +20,31 @@ export class LoginComponent implements OnInit {
   login: FormControl;
   password: FormControl;
 
+  incorrect: boolean = false;
+
+  public onClose: Subject<boolean>;
+
   constructor(private bsModalRef: BsModalRef, private auth: AuthService) { }
 
   ngOnInit() {
+      this.onClose = new Subject();
       this.createFormControls();
       this.createForm();
   }
 
   onSubmit() {
-    this.bsModalRef.hide();
+    this.auth.logIn(this.login.value, this.password.value)
+    .then(result=>{
+        console.log('result - ', result);
+        this.onClose.next(true);
+        this.bsModalRef.hide();
+    })
+    .catch(err=>{
+        console.log('Error: ', err);
+        this.onClose.next(false);
+        this.incorrect = true;
+    });
+
   }
 
   createFormControls() {

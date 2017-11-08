@@ -17,20 +17,17 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 export class AppComponent implements OnInit, AfterViewInit{
 
   isLogged: Boolean = false;
-
   bsModalRef: BsModalRef;
 
   constructor(private auth: AuthService, private modalService: BsModalService){
   }
 
   ngOnInit(){
-      this.auth.isLoggedIn()
-      .then(res=>{
-          this.isLogged = res.json().result;
-      })
-      .catch(err=>{
-          console.log('Err - ', err);
-      })
+      this.checkAuth();
+  }
+
+  ngAfterViewInit(){
+      //console.log('ngAfterViewInit');
   }
 
   logOut(){
@@ -46,13 +43,22 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   logIn(){
       console.log('LogIn');
-      this.bsModalRef = this.modalService.show(LoginComponent, {class: 'modal-dialog modal-sm'});
-      console.log('this.bsModalRef - ', this.bsModalRef)
+      this.bsModalRef = this.modalService.show(LoginComponent, {class: 'modal-dialog modal-sm', animated: true, keyboard: true, ignoreBackdropClick: true});
       this.bsModalRef.content.title = 'Log in';
+      this.bsModalRef.content.onClose.subscribe(result => {
+          if(result)
+            this.checkAuth();
+      });
+
   }
 
-  ngAfterViewInit(){
-      console.log('ngAfterViewInit');
+  checkAuth(){
+      this.auth.isLoggedIn()
+      .then(res=>{
+          this.isLogged = res.json().result;
+      })
+      .catch(err=>{
+          console.log('Err - ', err);
+      })
   }
-
 }

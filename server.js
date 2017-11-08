@@ -62,22 +62,8 @@ router.post('/custom', function(ctx) {
     })
 );*/
 
-router.post('/login',
-  passport.authenticate('local'), function(ctx){
-      ctx.body = {result :ctx.isAuthenticated()};
-  }
-);
-
-
-router.get('/logout', function(ctx) {
-  ctx.logout()
-  ctx.redirect('/')
-});
-
-router.get('/app', function(ctx) {
-  ctx.type = 'html'
-  ctx.body = fs.createReadStream('views/app.html')
-});
+require('./routes/login')(router);
+router.get('/logout', require('./routes/logout'));
 
 app.use(router.routes());
 
