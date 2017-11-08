@@ -17,6 +17,7 @@ import { CvComponent } from './cv/cv.component';
 import { AuthService } from './auth.service';
 import { LoginComponent } from './login/login.component';
 import { ThemeComponent } from './theme/theme.component';
+import { ThemeService } from './theme/theme.service';
 import { ArticleComponent } from './article/article.component';
 
 const routes: Routes = [
@@ -48,7 +49,7 @@ const routes: Routes = [
   entryComponents: [
      LoginComponent
   ],
-  providers: [AuthService],
+  providers: [AuthService, ThemeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

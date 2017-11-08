@@ -10,8 +10,9 @@ const ArticleSchema = new Schema({
         required: true
     },
     theme:{
-        type: String,
-        required: true
+        type: Schema.Types.ObjectId,
+        ref: 'Theme',
+        require: true
     },
     keywords:{
         type: [String]

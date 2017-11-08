@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
     this.auth.logIn(this.login.value, this.password.value)
     .then(result=>{
         console.log('result - ', result);
+
         this.onClose.next(true);
         this.bsModalRef.hide();
     })
