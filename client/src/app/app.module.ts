@@ -7,6 +7,7 @@ import {
     FormsModule
 } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { MarkdownModule } from 'angular2-markdown';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
@@ -16,6 +17,7 @@ import { CvComponent } from './cv/cv.component';
 import { AuthService } from './auth.service';
 import { LoginComponent } from './login/login.component';
 import { ThemeComponent } from './theme/theme.component';
+import { ArticleComponent } from './article/article.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -32,6 +34,7 @@ const routes: Routes = [
     CvComponent,
     LoginComponent,
     ThemeComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {useHash: true}),
     FormsModule,
     ReactiveFormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    MarkdownModule.forRoot()
   ],
   entryComponents: [
      LoginComponent
