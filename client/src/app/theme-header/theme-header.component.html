@@ -1,7 +1,7 @@
 
 <div class="themes-item">
   <div class="themes-item-icon">
-    <a (click)="goTo(theme.name)"><img [src]=theme.img [alt]=theme.title></a>
+    <a (click)="goTo(theme._id)"><img [src]=theme.img [alt]=theme.title></a>
   </div>
   <div class="themes-item-title">
     <h3>{{theme.title}}</h3>
@@ -10,7 +10,7 @@
   </div>
   <div class="themes-item-content">
     <ul>
-        <li *ngFor="let item of theme.contentList"><a (click)="goTo(theme.name, item)">{{item}}</a></li>
+        <li *ngFor="let item of theme.contentList"><a (click)="goTo(theme._id, item)">{{item}}</a></li>
     </ul>
   </div>
 </div>
