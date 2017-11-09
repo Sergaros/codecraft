@@ -9,8 +9,7 @@
           </div>
         <div class="form-group" [ngClass]="{
         'has-danger': login.invalid && (login.dirty || login.touched),
-        'has-success': login.valid && (login.dirty || login.touched)
-      }">
+        'has-success': login.valid && (login.dirty || login.touched)}">
           <label>Login</label>
           <input type="text" class="form-control" formControlName="login" required>
           <div class="form-text text-muted" *ngIf="login.errors && (login.dirty || login.touched)">
@@ -30,8 +29,9 @@
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit
-    </button>
+        <re-captcha (resolved)="resolved($event)" siteKey="6Leb-jcUAAAAAAOz26b3FLXeTmzRL4eviXPOjoUl"></re-captcha>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
     <!--<div class="modal-footer">

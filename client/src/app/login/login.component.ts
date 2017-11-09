@@ -63,4 +63,8 @@ export class LoginComponent implements OnInit {
    });
  }
 
+ resolved(result){
+     console.log('recaptcha resolved - ', result);
+ }
+
 }

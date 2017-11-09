@@ -6,6 +6,7 @@ import {
     ReactiveFormsModule,
     FormsModule
 } from '@angular/forms';
+import { RecaptchaModule } from 'ng-recaptcha';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { MarkdownModule } from 'angular2-markdown';
 
@@ -19,6 +20,7 @@ import { LoginComponent } from './login/login.component';
 import { ThemeComponent } from './theme/theme.component';
 import { ThemeService } from './theme/theme.service';
 import { ArticleComponent } from './article/article.component';
+import { ThemeManagerComponent } from './theme-manager/theme-manager.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -35,7 +37,8 @@ const routes: Routes = [
     CvComponent,
     LoginComponent,
     ThemeComponent,
-    ArticleComponent
+    ArticleComponent,
+    ThemeManagerComponent
   ],
   imports: [
     BrowserModule,
@@ -44,10 +47,12 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    RecaptchaModule.forRoot()
   ],
   entryComponents: [
-     LoginComponent
+     LoginComponent,
+     ThemeManagerComponent
   ],
   providers: [AuthService, ThemeService],
   bootstrap: [AppComponent]

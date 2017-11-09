@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http, Response} from '@angular/http';
+import {Http, Response, URLSearchParams} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -7,23 +7,28 @@ export class ThemeService {
 
   constructor(private http: Http) { }
 
-  get() {
-      return this.http.get('/api/themes')
+  getAll() {
+      return this.http.get('/api/theme')
       .toPromise();
   }
 
-  add() {
-      return this.http.get('/api/themes')
+  get(id: string) {
+      return this.http.get(`/api/theme/${id}`)
       .toPromise();
   }
 
-  remove() {
-      return this.http.get('/api/themes')
+  add(theme: any) {
+      return this.http.post('/api/theme', theme)
       .toPromise();
   }
 
-  update() {
-      return this.http.get('/api/themes')
+  delete(id: string) {
+      return this.http.delete(`/api/theme/${id}`)
+      .toPromise();
+  }
+
+  update(id: string, data: any) {
+      return this.http.put(`/api/theme/${id}`, data)
       .toPromise();
   }
 

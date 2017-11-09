@@ -65,6 +65,8 @@ router.post('/custom', function(ctx) {
 require('./routes/login')(router);
 router.get('/logout', require('./routes/logout'));
 
+require('./routes/theme')(router);
+
 app.use(router.routes());
 
 // start server
