@@ -66,6 +66,7 @@ require('./routes/login')(router);
 router.get('/logout', require('./routes/logout'));
 
 require('./routes/theme')(router);
+require('./routes/article')(router);
 
 app.use(router.routes());
 

@@ -171,6 +171,20 @@ Content
   border-left: 200px solid #fff;
   border-top: 700px solid transparent;
 }
+
+.img-theme-container {
+  width: 60%;
+  height: 700px;
+  float: right;
+}
+
+.img-theme-container img{
+  width:80%;
+  height: 80%;
+  margin: 100px;
+}
+
+
 #content-content-box {
   float: left;
   height: 700px;

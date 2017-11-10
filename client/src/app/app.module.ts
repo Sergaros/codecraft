@@ -18,9 +18,11 @@ import { CvComponent } from './cv/cv.component';
 import { AuthService } from './auth.service';
 import { LoginComponent } from './login/login.component';
 import { ThemeComponent } from './theme/theme.component';
+import { ThemeManagerComponent } from './theme-manager/theme-manager.component';
 import { ThemeService } from './theme/theme.service';
 import { ArticleComponent } from './article/article.component';
-import { ThemeManagerComponent } from './theme-manager/theme-manager.component';
+import { ArticleManagerComponent } from './article-manager/article-manager.component';
+import { ArticleService} from './article/article.service';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -38,7 +40,8 @@ const routes: Routes = [
     LoginComponent,
     ThemeComponent,
     ArticleComponent,
-    ThemeManagerComponent
+    ThemeManagerComponent,
+    ArticleManagerComponent
   ],
   imports: [
     BrowserModule,
@@ -52,9 +55,12 @@ const routes: Routes = [
   ],
   entryComponents: [
      LoginComponent,
-     ThemeManagerComponent
+     ThemeManagerComponent,
+     ArticleManagerComponent
   ],
-  providers: [AuthService, ThemeService],
+  providers: [AuthService,
+              ThemeService,
+              ArticleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

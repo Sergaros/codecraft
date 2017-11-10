@@ -14,8 +14,9 @@ const articleSchema = new Schema({
         ref: 'Theme',
         require: true
     },
-    keywords:{
-        type: [String]
+    subtheme:{
+        type: String,
+        required: true
     },
     body:{
         type: String

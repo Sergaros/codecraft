@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { ThemeService } from './theme.service';
 import { AuthService } from '../auth.service';
+import {Router} from "@angular/router";
+
+import { ArticleManagerComponent } from '../article-manager/article-manager.component';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-theme',
@@ -10,19 +15,35 @@ import { AuthService } from '../auth.service';
 })
 export class ThemeComponent implements OnInit {
 
+  theme: any = {};
+  private bsModalRef: BsModalRef;
+
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private authService: AuthService,
-              private themeService: ThemeService) {
-    this.route.params.subscribe(params => {
-      console.log('params - ', params);
-      themeService.get(params.theme)
-      .then(result=>{
-          console.log('theme result - ', result.json())
-      })
-    })
+              private themeService: ThemeService,
+              private modalService: BsModalService) {
+
   }
 
   ngOnInit() {
+      this.route.params.subscribe(params => {
+            this.themeService.get(params.theme)
+            .then(result=>{
+                this.theme = result.json();
+                //console.log('theme result - ', result.json())
+            })
+      })
   }
 
+  addArticle(subtheme: string){
+      this.bsModalRef = this.modalService.show(ArticleManagerComponent, {class: 'modal-dialog modal-lg', animated: true, keyboard: true, ignoreBackdropClick: true});
+      this.bsModalRef.content.title = 'Add Article';
+      this.bsModalRef.content.themeId = this.theme._id;
+      this.bsModalRef.content.subtheme = this.theme.subtheme;
+      this.bsModalRef.content.onClose.subscribe(result => {
+          //this.refreshThemes();
+          //this.themeChanged.emit();
+      });
+  }
 }
