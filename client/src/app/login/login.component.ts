@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.auth.logIn(this.login.value, this.password.value, this.recaptcha)
     .then(result=>{
-        console.log('result - ', result);
+        //console.log('result - ', result);
 
         this.onClose.next(true);
         this.bsModalRef.hide();
@@ -65,10 +65,6 @@ export class LoginComponent implements OnInit {
  }
 
  resolved(result){
-     /*this.auth.recaptcha(result)
-     .then(result=>{
-         console.log('recaptcha - ', result);
-     })*/
      this.recaptcha = result;
  }
 
