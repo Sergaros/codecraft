@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Http, Response, URLSearchParams} from '@angular/http';
 
 @Injectable()
 export class ArticleService {
@@ -11,7 +12,7 @@ export class ArticleService {
     }
 
     get(id: string) {
-        return this.http.get(`/api/theme/${id}`)
+        return this.http.get(`/api/article/${id}`)
         .toPromise();
     }
 

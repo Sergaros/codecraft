@@ -10,5 +10,10 @@
             "length": "128",
             "iterations": "1200"
         }
+    },
+    "recaptcha":{
+        "public_key": "6Leb-jcUAAAAAAOz26b3FLXeTmzRL4eviXPOjoUl",
+        "private_key": "6Leb-jcUAAAAAEcPk9MIce0inZNBahQWBvtm-smr"
+
     }
 }

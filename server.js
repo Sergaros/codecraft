@@ -37,33 +37,9 @@ router.get('/isloggedin', function(ctx) {
     ctx.body = {result: ctx.isAuthenticated()};
 });
 
-/*router.get('/', function(ctx) {
-  ctx.type = 'html'
-  ctx.body = fs.createReadStream('views/login.html')
-});
-
-router.post('/custom', function(ctx) {
-  return passport.authenticate('local', function(err, user, info, status) {
-    if (user === false) {
-      ctx.body = { success: false }
-      ctx.throw(401)
-    } else {
-      ctx.body = { success: true }
-      return ctx.login(user)
-    }
-  })(ctx)
-});*/
-
-// POST /login
-/*router.post('/login',
-  passport.authenticate('local', {
-        successRedirect: '/',
-        failureRedirect: '/'
-    })
-);*/
-
 require('./routes/login')(router);
 router.get('/logout', require('./routes/logout'));
+require('./routes/recaptcha')(router);
 
 require('./routes/theme')(router);
 require('./routes/article')(router);

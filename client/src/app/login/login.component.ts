@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   authForm: FormGroup;
   login: FormControl;
   password: FormControl;
+  recaptcha: string;
 
   incorrect: boolean = false;
 
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.auth.logIn(this.login.value, this.password.value)
+    this.auth.logIn(this.login.value, this.password.value, this.recaptcha)
     .then(result=>{
         console.log('result - ', result);
 
@@ -64,7 +65,11 @@ export class LoginComponent implements OnInit {
  }
 
  resolved(result){
-     console.log('recaptcha resolved - ', result);
+     /*this.auth.recaptcha(result)
+     .then(result=>{
+         console.log('recaptcha - ', result);
+     })*/
+     this.recaptcha = result;
  }
 
 }

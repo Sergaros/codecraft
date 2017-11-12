@@ -15,6 +15,9 @@ module.exports = (router)=>{
     .post('/api/theme', async function(ctx) {
         //console.log('ctx.request.body - ', ctx.request.body)
 
+        if(!ctx.isAuthenticated())
+            ctx.body = {result: false};
+
         const theme = {};
         theme.name = ctx.request.body.name?ctx.request.body.name:'';
         theme.image = ctx.request.body.image?ctx.request.body.image:'';
@@ -25,6 +28,9 @@ module.exports = (router)=>{
     .put('/api/theme/:id', async function(ctx) {
         console.log('ctx.request.body - ', ctx.request.body);
         console.log('ctx.request.body - ', ctx.params.id);
+
+        if(!ctx.isAuthenticated())
+            ctx.body = {result: false};
 
         let theme = await Theme.findOne({_id: ctx.params.id});
 
@@ -37,6 +43,9 @@ module.exports = (router)=>{
             ctx.body = {result: false};
     })
     .delete('/api/theme/:id', async function(ctx) {
+        if(!ctx.isAuthenticated())
+            ctx.body = {result: false};
+            
         ctx.body = await Theme.remove({_id: ctx.params.id});
     })
 };

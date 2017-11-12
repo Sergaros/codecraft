@@ -8,6 +8,8 @@ import {
   FormBuilder
 } from '@angular/forms';
 
+import { ArticleService } from '../article/article.service';
+
 @Component({
   selector: 'app-article-manager',
   templateUrl: './article-manager.component.html',
@@ -19,10 +21,13 @@ export class ArticleManagerComponent implements OnInit {
     name: FormControl;
     body: FormControl;
 
+    themeId: string = '';
+    subtheme: string = '';
+
     public onClose: Subject<boolean>;
 
-  constructor(private bsModalRef: BsModalRef) {
-
+  constructor(private articleService: ArticleService,
+              private bsModalRef: BsModalRef) {
   }
 
   ngOnInit() {
@@ -32,15 +37,23 @@ export class ArticleManagerComponent implements OnInit {
       this.createForm();
 
       setTimeout(() => { //get params
-              if(this.bsModalRef.content._id){
-                  /*this.themeService.get(this.bsModalRef.content._id)
-                  .then(result=>{
-                      //console.log('Edit theme - ', result.json());
-                      const theme = result.json();
-                      this.sbthemes = theme.subthemes;
-                      this.name.setValue(theme.name);
-                      this.image.setValue(theme.image);
-                  })*/
+          if(this.bsModalRef.content.themeId && //new
+             this.bsModalRef.content.subtheme){
+
+                 this.themeId = this.bsModalRef.content.themeId;
+                 this.subtheme = this.bsModalRef.content.subtheme;
+
+             } else if(this.bsModalRef.content._id){ //edit
+                 console.log('edit article - ', this.bsModalRef.content._id);
+                 this.articleService.get(this.bsModalRef.content._id)
+                 .then(result=>{
+                     const article = result.json();
+                     console.log('article edit res - ', article);
+                     this.themeId = article.theme;
+                     this.subtheme = article.subtheme;
+                     this.name.setValue(article.name);
+                     this.body.setValue(article.body);
+                 })
               }
           },
       0);
@@ -59,31 +72,30 @@ export class ArticleManagerComponent implements OnInit {
   }
 
   onSubmit() {
-      console.log('Submit - ', this.articleForm.value)
-      //this.themeForm.value;
+      if(this.articleForm.invalid)
+        return;
 
-      if(this.bsModalRef.content._id){
-          this.themeService.update(this.bsModalRef.content._id,
-          {
-              name: this.name.value,
-              image: this.image.value,
-              subthemes: this.sbthemes
-          })
-          .then(result=>{
-              this.onClose.next(true);
-              this.bsModalRef.hide();
-          })
-      } else {
-          this.themeService.add({
-              name: this.name.value,
-              image: this.image.value,
-              subthemes: this.sbthemes
-          })
-          .then(result=>{
-              this.onClose.next(true);
-              this.bsModalRef.hide();
-          })
-      }*/
+      if(this.bsModalRef.content._id){ //edit
+          this.articleService.update(this.bsModalRef.content._id, {
+             name: this.name.value,
+             body: this.body.value
+         })
+         .then(result=>{
+             this.onClose.next(this.bsModalRef.content._id);
+             this.bsModalRef.hide();
+         });
+     } else { //add new
+         this.articleService.add({
+             theme: this.themeId,
+             subtheme: this.subtheme,
+             name: this.name.value,
+             body: this.body.value
+         })
+         .then(result=>{
+             this.onClose.next(result.json()._id);
+             this.bsModalRef.hide();
+         })
+     }
   }
 
 }

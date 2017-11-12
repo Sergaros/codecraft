@@ -15,12 +15,14 @@
               </div>
               <div class="content-descr wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
                   <ul>
-                      <li *ngFor="let subtheme of theme.subthemes">{{subtheme}} <a class="fa fa-plus" aria-hidden="true" (click)="addArticle(subtheme)"></a></li>
+                      <li *ngFor="let subtheme of theme.subthemes">{{subtheme}} <a class="fa fa-plus" aria-hidden="true" (click)="addArticle(subtheme)"></a>
+                          <ul>
+                              <li *ngFor="let article of getThemeArticles(subtheme)"><a (click)="currentArticle = article">{{article.name}}</a></li>
+                          </ul>
+                      </li>
                   </ul>
-                <section id="Examples">
-                    <markdown>
-                        ## Markdown h2 content
-                    </markdown>
+                <section>
+                    <app-article [data]="currentArticle" (articleChanged)="articleRefresh($event)">Loading</app-article>
                 </section>
               </div>
             </div>

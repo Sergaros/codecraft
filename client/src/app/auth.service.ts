@@ -9,8 +9,8 @@ export class AuthService {
 
   public isAuthenticated: boolean = false;
 
-  logIn(name: string, password: string){
-      return this.http.post('/login', {username:name, password:password})
+  logIn(name: string, password: string, recaptcha: string){
+      return this.http.post('/login', {username:name, password:password, recaptcha: recaptcha})
       .toPromise()
       .then(result=>{
           this.isAuthenticated = result.json().result;
@@ -32,5 +32,10 @@ export class AuthService {
       return this.http.get('/logout')
       .toPromise();
   }
+
+  /*recaptcha(key){
+      return this.http.post('/recaptcha', {key})
+      .toPromise();
+  }*/
 
 }
