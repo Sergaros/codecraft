@@ -21,23 +21,24 @@ const User = mongoose.models.User;
 
 passport.use(new LocalStrategy(
     function(username, password, done) {
-        console.log('username, password - ', username, password);
         User.findOne({
                 name: username
             })
             .then(user => {
 
-                if (!user)
+                if (!user){
                     return done(null, false, {
                         message: 'User not found.'
                     });
+                }
 
                 if (user.checkPassword(password))
                     done(null, user);
-                else
+                else{
                     return done(null, false, {
                         message: 'Password or login is incorrect.'
                     });
+                }
             })
             .catch(err => done(err))
     }));
