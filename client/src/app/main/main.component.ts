@@ -35,9 +35,9 @@ export class MainComponent implements OnInit {
       ];*/
   }
 
-  /*isAuth(){
+  isAuth(){
       return this.auth.isAuthenticated;
-  }*/
+  }
 
   showThemeManager(){
       this.bsModalRef = this.modalService.show(ThemeManagerComponent, {class: 'modal-dialog modal-sm', animated: true, keyboard: true, ignoreBackdropClick: true});

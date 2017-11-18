@@ -3,6 +3,8 @@
 const mongoose = require('mongoose');
 const Theme = mongoose.models.Theme;
 
+const {checkAuth} = require('../libs/common');
+
 module.exports = (router)=>{
     router.get('/api/theme', async function(ctx) {
         //console.log('ctx.params.id - ', ctx.params.id);
@@ -12,7 +14,7 @@ module.exports = (router)=>{
         //console.log('ctx.params.id - ', ctx.params.id);
         ctx.body = await Theme.findOne({_id: ctx.params.id});
     })
-    .post('/api/theme', async function(ctx) {
+    .post('/api/theme', checkAuth, async function(ctx) {
         //console.log('ctx.request.body - ', ctx.request.body)
 
         if(!ctx.isAuthenticated())
@@ -25,7 +27,7 @@ module.exports = (router)=>{
 
         ctx.body = await new Theme(theme).save();
     })
-    .put('/api/theme/:id', async function(ctx) {
+    .put('/api/theme/:id', checkAuth, async function(ctx) {
         console.log('ctx.request.body - ', ctx.request.body);
         console.log('ctx.request.body - ', ctx.params.id);
 
@@ -42,10 +44,10 @@ module.exports = (router)=>{
         } else
             ctx.body = {result: false};
     })
-    .delete('/api/theme/:id', async function(ctx) {
+    .delete('/api/theme/:id', checkAuth, async function(ctx) {
         if(!ctx.isAuthenticated())
             ctx.body = {result: false};
-            
+
         ctx.body = await Theme.remove({_id: ctx.params.id});
     })
 };

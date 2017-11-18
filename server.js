@@ -42,15 +42,15 @@ router.get('/logout', require('./routes/logout'));
 require('./routes/recaptcha')(router);
 
 //auth check
-router.use(['/api/theme', '/api/theme/:id',
-            '/api/article', '/api/article/:id', '/api/article/theme/:themeId'],  function(ctx, next){
+/*router.use(['/api/theme/:id',
+            '/api/article/:id', '/api/article/theme/:themeId'],  function(ctx, next){
                 if(ctx.isAuthenticated())
                     return next();
                 else {
                     ctx.status = 401;
                     ctx.body = 'Authorisation fail.';
                 }
-            });
+            });*/
 
 require('./routes/theme')(router);
 require('./routes/article')(router);

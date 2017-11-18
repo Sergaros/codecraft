@@ -79,4 +79,8 @@ export class ThemeComponent implements OnInit {
       })
   }
 
+  isAuth(){
+      return this.authService.isAuthenticated;
+  }
+
 }

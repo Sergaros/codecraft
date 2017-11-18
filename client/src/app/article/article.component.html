@@ -1,8 +1,8 @@
 <div>
       <div class="themes-item-title">
         <h2>{{article.name}}</h2>
-        <a *ngIf="authService.isAuthenticated" class="fa fa-cog" aria-hidden="true" (click)="editArticle()"></a>
-        <a *ngIf="authService.isAuthenticated" class="fa fa-times" aria-hidden="true" (click)="deleteArticle()"></a>
+        <a *ngIf="isAuth()" class="fa fa-cog" aria-hidden="true" (click)="editArticle()"></a>
+        <a *ngIf="isAuth()" class="fa fa-times" aria-hidden="true" (click)="deleteArticle()"></a>
       </div>
     <div>
         <markdown [data]="article.body?article.body:''"></markdown>

@@ -44,4 +44,8 @@ export class ArticleComponent implements OnInit {
       });
   }
 
+  isAuth(){
+      return this.authService.isAuthenticated;
+  }
+
 }

@@ -20,7 +20,7 @@ export class ThemeHeaderComponent implements OnInit {
 
     constructor(private router: Router,
                 private themeService: ThemeService,
-                private auth: AuthService,
+                private authService: AuthService,
                 private modalService: BsModalService) { }
 
     ngOnInit() {
@@ -46,5 +46,9 @@ export class ThemeHeaderComponent implements OnInit {
         .then(result=>{
             this.themeChanged.emit();
         })
+    }
+
+    isAuth(){
+        return this.authService.isAuthenticated;
     }
 }
