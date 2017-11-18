@@ -21,6 +21,7 @@ export class ThemeManagerComponent implements OnInit {
     name: FormControl;
     image: FormControl;
     nsbtheme: FormControl;
+    public title: string;
 
     sbthemes: string[];
 

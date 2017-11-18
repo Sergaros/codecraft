@@ -16,7 +16,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-    private themes: ThemeHeader[];
+    themes: ThemeHeader[];
     private bsModalRef: BsModalRef;
 
     constructor(private auth: AuthService,
@@ -35,9 +35,9 @@ export class MainComponent implements OnInit {
       ];*/
   }
 
-  isAuth(){
+  /*isAuth(){
       return this.auth.isAuthenticated;
-  }
+  }*/
 
   showThemeManager(){
       this.bsModalRef = this.modalService.show(ThemeManagerComponent, {class: 'modal-dialog modal-sm', animated: true, keyboard: true, ignoreBackdropClick: true});

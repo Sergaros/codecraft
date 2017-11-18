@@ -14,7 +14,6 @@
           <li><a href="#home">Home</a></li>
           <li><a href="#themes">Themes</a></li>
           <li><a href="#cv">CV</a></li>
-          <li><a href="#work">Works</a></li><!--Temporary-->
           <li *ngIf="!isLogged"><a (click)="logIn()"><i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
           <li *ngIf="isLogged"><a (click)="logOut()"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
         </ul>

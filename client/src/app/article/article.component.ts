@@ -1,6 +1,7 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { ArticleManagerComponent } from '../article-manager/article-manager.component';
 import { ArticleService } from './article.service';
+import { AuthService } from '../auth.service';
 import { Subject } from 'rxjs/Subject';
 //import {Article} from './article'
 
@@ -19,6 +20,7 @@ export class ArticleComponent implements OnInit {
   private bsModalRef: BsModalRef;
 
   constructor(private articleService: ArticleService,
+              private authService: AuthService,
               private modalService: BsModalService) { }
 
   ngOnInit() {

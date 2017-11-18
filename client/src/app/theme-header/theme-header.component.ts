@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, TemplateRef } from '@an
 import { ThemeHeader } from './theme-header';
 import {Router} from "@angular/router";
 import { ThemeService } from '../theme/theme.service';
+import { AuthService } from '../auth.service';
 
 import { ThemeManagerComponent } from '../theme-manager/theme-manager.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -19,13 +20,14 @@ export class ThemeHeaderComponent implements OnInit {
 
     constructor(private router: Router,
                 private themeService: ThemeService,
+                private auth: AuthService,
                 private modalService: BsModalService) { }
 
     ngOnInit() {
     }
 
     goTo(theme: string, stheme: string) {
-        console.log('goTo - ', theme, stheme);
+        //console.log('goTo - ', theme, stheme);
         this.router.navigate(['work', {theme, stheme}]);
     }
 

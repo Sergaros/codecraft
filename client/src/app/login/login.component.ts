@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   login: FormControl;
   password: FormControl;
   recaptcha: string;
+  public title: string;
 
   incorrect: boolean = false;
 

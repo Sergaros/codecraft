@@ -18,6 +18,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 export class ThemeComponent implements OnInit {
 
   theme: any = {};
+  subtheme: string;
   articles: any[] = [];
   currentArticle: any = {};
 
@@ -34,6 +35,8 @@ export class ThemeComponent implements OnInit {
 
   ngOnInit() {
       this.route.params.subscribe(params => {
+            //console.log('theme params - ', params);
+            this.subtheme = params.stheme;
             this.themeService.get(params.theme)
             .then(result=>{
                 this.theme = result.json();
@@ -64,12 +67,13 @@ export class ThemeComponent implements OnInit {
   articleRefresh(id: string){
       this.articleService.getAll(this.theme._id)
       .then(result=>{
-          //console.log('Articles - ', result.json());
           this.articles = result.json();
           if(this.articles.length){
               if(id)
                   this.currentArticle = this.articles.find(art=>art._id===id);
-              else
+              else if(this.subtheme){
+                  this.currentArticle = this.articles.find(art=>art.subtheme===this.subtheme);
+              } else
                   this.currentArticle = this.articles[0];
           }
       })

@@ -24,6 +24,8 @@ export class ArticleManagerComponent implements OnInit {
     themeId: string = '';
     subtheme: string = '';
 
+    public title: string;
+
     public onClose: Subject<boolean>;
 
   constructor(private articleService: ArticleService,

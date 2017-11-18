@@ -25,14 +25,14 @@
           <div class="col-md-4" *ngFor="let theme of themes">
               <app-theme-header [theme]=theme (themeChanged)="themeChanged()"></app-theme-header>
           </div>
-         <div class="col-md-4" *ngIf="isAuth()">
+         <div class="col-md-4" *ngIf="auth.isAuthenticated">
              <a class="fa fa-plus fa-5x" aria-hidden="true" (click)="showThemeManager()"></a>
          </div>
-      </div>
+     </div>
     </div>
   </div>
 </section>
 
-<section id="content">
+<section id="cv">
     <app-cv></app-cv>
 </section>
