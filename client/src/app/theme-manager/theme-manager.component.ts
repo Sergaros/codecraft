@@ -99,4 +99,11 @@ export class ThemeManagerComponent implements OnInit {
        this.nsbtheme.setValue('');
    }
 
+   removeSubTheme(sbtheme: string){
+       let index = this.sbthemes.findIndex(sbt=>sbt===sbtheme);
+       if(index !== -1){
+           this.sbthemes.splice(index, 1);
+       }
+   }
+
 }

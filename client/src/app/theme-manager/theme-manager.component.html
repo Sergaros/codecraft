@@ -28,7 +28,7 @@
         <label>Sub themes</label>
 
         <ul class="list-group">
-          <li class="list-group-item" *ngFor="let sbtheme of sbthemes">{{sbtheme}}</li>
+          <li class="list-group-item" *ngFor="let sbtheme of sbthemes">{{sbtheme}} <a class="fa fa-times" aria-hidden="true" (click)="removeSubTheme(sbtheme)"></a></li>
           <li class="list-group-item"><input type="text" class="form-control" formControlName="nsbtheme"><a class="fa fa-plus" aria-hidden="true" (click)="addSubTheme()"></a></li>
         </ul>
       </div>
