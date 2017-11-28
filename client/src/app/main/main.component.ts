@@ -58,7 +58,8 @@ export class MainComponent implements OnInit {
                  theme.image,
                  theme.name,
                  theme._id,
-                 theme.subthemes
+                 theme.subthemes,
+                 theme.ishide
              ))
          });
       })
@@ -67,6 +68,10 @@ export class MainComponent implements OnInit {
   themeChanged(){
       //console.log('Theme changed')
       this.refreshThemes();
+  }
+
+  showTheme(theme){
+      return this.isAuth()?true:!theme.ishide;
   }
 
 }

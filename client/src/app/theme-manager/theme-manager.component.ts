@@ -21,6 +21,7 @@ export class ThemeManagerComponent implements OnInit {
     name: FormControl;
     image: FormControl;
     nsbtheme: FormControl;
+    ishide: FormControl;
     public title: string;
 
     sbthemes: string[];
@@ -46,6 +47,7 @@ export class ThemeManagerComponent implements OnInit {
                         this.sbthemes = theme.subthemes;
                         this.name.setValue(theme.name);
                         this.image.setValue(theme.image);
+                        this.ishide.setValue(theme.ishide);
                     })
                 }
             },
@@ -56,23 +58,22 @@ export class ThemeManagerComponent implements OnInit {
         //console.log('Sbmit - ', this.themeForm.value)
         //this.themeForm.value;
 
+        let data = {
+            name: this.name.value,
+            image: this.image.value,
+            ishide: this.ishide.value,
+            subthemes: this.sbthemes
+        };
+
         if(this.bsModalRef.content._id){
             this.themeService.update(this.bsModalRef.content._id,
-            {
-                name: this.name.value,
-                image: this.image.value,
-                subthemes: this.sbthemes
-            })
+            data)
             .then(result=>{
                 this.onClose.next(true);
                 this.bsModalRef.hide();
             })
         } else {
-            this.themeService.add({
-                name: this.name.value,
-                image: this.image.value,
-                subthemes: this.sbthemes
-            })
+            this.themeService.add(data)
             .then(result=>{
                 this.onClose.next(true);
                 this.bsModalRef.hide();
@@ -84,13 +85,15 @@ export class ThemeManagerComponent implements OnInit {
      this.name = new FormControl('', Validators.required);
      this.image = new FormControl('', Validators.required);
      this.nsbtheme = new FormControl('');
+     this.ishide = new FormControl('');
    }
 
    createForm() {
      this.themeForm = new FormGroup({
        name: this.name,
        image: this.image,
-       nsbtheme: this.nsbtheme
+       nsbtheme: this.nsbtheme,
+       ishide: this.ishide
      });
    }
 

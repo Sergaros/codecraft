@@ -12,6 +12,11 @@ const themeSchema = new Schema({
     image:{
         type: String
     },
+    ishide:{
+        type: Boolean,
+        required: true,
+        default: false
+    },
     subthemes:{
         type: [String]
     }
