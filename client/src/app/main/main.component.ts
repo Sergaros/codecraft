@@ -26,13 +26,6 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
       this.refreshThemes();
-      /*this.themes = [
-          new ThemeHeader('angular','/assets/img/angular.svg','Angular.js', ['Templates', 'Snippets', 'Others']),
-          new ThemeHeader('node','/assets/img/nodejs.svg','Node.js', ['Templates', 'Snippets', 'Others']),
-          new ThemeHeader('mongodb','/assets/img/mongo.png','MongoDB', ['Templates', 'Snippets', 'Others']),
-          new ThemeHeader('redis','/assets/img/redis.svg','Redis', ['Templates', 'Snippets', 'Others']),
-          new ThemeHeader('docker','/assets/img/docker.svg','Docker', ['Templates', 'Snippets', 'Others']),
-      ];*/
   }
 
   isAuth(){
@@ -51,16 +44,17 @@ export class MainComponent implements OnInit {
       this.themes = [];
       this.themeService.getAll()
       .then(result=>{
-          //console.log('Themes - ', result.json());
+          console.log('Refresh Themes - ', result.json());
           result.json().forEach(theme=>{
-              this.themes.push(new ThemeHeader(
-                 theme.name.toLowerCase().split('.')[0],
-                 theme.image,
-                 theme.name,
-                 theme._id,
-                 theme.subthemes,
-                 theme.ishide
-             ))
+              if(this.isAuth() || !theme.ishide)
+                  this.themes.push(new ThemeHeader(
+                     theme.name.toLowerCase().split('.')[0],
+                     theme.image,
+                     theme.name,
+                     theme._id,
+                     theme.subthemes,
+                     theme.ishide
+                 ))
          });
       })
   }
@@ -68,10 +62,6 @@ export class MainComponent implements OnInit {
   themeChanged(){
       //console.log('Theme changed')
       this.refreshThemes();
-  }
-
-  showTheme(theme){
-      return this.isAuth()?true:!theme.ishide;
   }
 
 }
